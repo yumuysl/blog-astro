@@ -10,7 +10,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*": "pnpm prettier --write"
+    "*": ["pnpm dlx eslint --fix", "pnpm prettier --write"]
   },
   "dependencies": {
     "astro": "^5.17.1"
