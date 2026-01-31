@@ -12,6 +12,7 @@ coverage
 my-special-file.js
 
 # 我的
-.husky
- .prettierignore
- .gitignore
+.husky/
+.prettierignore
+.gitignore
+.eslintignore
