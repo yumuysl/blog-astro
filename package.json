@@ -1,5 +1,6 @@
 {
-  "name": "f-code-myprojects-blog-astro",
+  "name": "blog-astro",
+  "description": "个人博客",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +11,10 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*": ["pnpm dlx eslint --fix", "pnpm prettier --write"]
+    "*": [
+      "pnpm dlx eslint --fix",
+      "pnpm prettier --write"
+    ]
   },
   "dependencies": {
     "astro": "^5.17.1"
