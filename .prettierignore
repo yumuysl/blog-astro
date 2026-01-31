@@ -1,0 +1,17 @@
+# 忽略目录
+node_modules
+dist
+build
+coverage
+
+# 忽略特定文件类型
+*.min.js
+*.html
+
+# 忽略特定文件
+my-special-file.js
+
+# 我的
+.husky
+ .prettierignore
+ .gitignore
