@@ -2,10 +2,13 @@ node_modules/
 build/
 package-lock.json
 .vscode/
+.astro
+.git
+.husky
 firebase/
 dist/
-public/workbox
-packages/excalidraw/types
+public/
 examples/**/public
 dev-dist
 coverage
+docs/

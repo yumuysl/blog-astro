@@ -1,2 +1,10 @@
-// 自定义类型声明
-// 查看文档：https://docs.astro.build/zh-cn/guides/typescript/#window-%E5%92%8C-globalthis
+/// <reference types="astro/client" />
+/// <reference path="../.astro/types.d.ts" />
+
+interface ImportMetaEnv {
+	readonly UMAMI_API_KEY?: string;
+}
+
+interface ImportMeta {
+	readonly env: ImportMetaEnv;
+}

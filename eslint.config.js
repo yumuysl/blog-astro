@@ -21,6 +21,7 @@ export default defineConfig([
       ecmaVersion: 'latest', // ecmaVersion 应在此处设置
       globals: {
         ...globals.browser, // 正确合并浏览器全局变量
+        ...globals.node,
         // 可以在此添加其他自定义全局变量
       },
       parser: ts.parser, // 明确指定 TypeScript 解析器

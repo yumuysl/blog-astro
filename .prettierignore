@@ -16,3 +16,28 @@ my-special-file.js
 .prettierignore
 .gitignore
 .eslintignore
+public/
+
+# Build outputs
+.astro/
+
+# Logs
+*.log
+pnpm-debug.log*
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docs
+**/*.md

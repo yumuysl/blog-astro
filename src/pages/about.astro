@@ -1,48 +1,41 @@
 ---
-import Menu from '../components/Menu.astro'
 
-const pageTitle = '关于我'
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
 
-// const identity = {
-//   firstName: '莎拉',
-//   country: '加拿大',
-//   occupation: '技术撰稿人',
-//   hobbies: ['摄影', '观鸟', '棒球'],
-// }
+const aboutPost = await getEntry("spec", "about");
 
-// const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'Writing Docs']
+if (!aboutPost) {
+	throw new Error("About page content not found");
+}
 
-const happy = true
-const finished = false
-const goal = 3
+const { Content } = await render(aboutPost);
+const title = i18n(I18nKey.about);
 ---
-
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <a href="/">首页</a>
-    <a href="/about/">关于</a>
-    <a href="/blog/">博客</a>
-    <h1>{pageTitle}</h1>
-    <h2>……和我的新 Astro 网站！</h2>
-    <Menu />
-
-    {happy && <p>我非常乐意学习 Astro！</p>}
-
-    {finished && <p>我完成了这节教程！</p>}
-
-    {goal === 3 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}
-    <script>
-      const menu = document.querySelector('.menu')
-
-      menu?.addEventListener('click', () => {
-        const isExpanded = menu.getAttribute('aria-expanded') === 'true'
-        menu.setAttribute('aria-expanded', `${!isExpanded}`)
-      })
-    </script>
-  </body>
-</html>
+<MainGridLayout title={title}>
+	<!-- 引入右侧边栏布局管理器 -->
+  <script>
+    import('../scripts/right-sidebar-layout.js');
+  </script>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <!-- 页面标题 -->
+            <div class="flex flex-col items-start justify-center mb-8">
+                <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2 relative
+                          before:w-1 before:h-8 before:rounded-md before:bg-[var(--primary)]
+                          before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-4">
+                    {title}
+                </h1>
+            </div>
+            
+            
+            <!-- 从MD文件读取的内容 -->
+            <Markdown class="mt-2">
+                <Content />
+            </Markdown>
+        </div>
+    </div>
+</MainGridLayout>
