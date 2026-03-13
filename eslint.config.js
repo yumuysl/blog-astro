@@ -49,7 +49,7 @@ export default defineConfig([
         'warn',
         { allowConstantExport: true },
       ],
-      // '@typescript-eslint/no-explicit-any': 'warn', // 或 'off'
+      '@typescript-eslint/no-explicit-any': 'warn', // 或 'off'
     },
   },
   // Prettier 集成 - 确保这是最后一个配置以覆盖前面的格式化规则
