@@ -15,3 +15,7 @@ my-special-file.js
 .husky
  .prettierignore
  .gitignore
+ .npmrc
+*.yaml
+ docs
+ src/assets
