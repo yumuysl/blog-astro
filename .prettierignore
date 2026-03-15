@@ -21,3 +21,4 @@ my-special-file.js
 *.yaml
 *.yml
  src/assets
+ src/content
