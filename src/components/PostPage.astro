@@ -1,8 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import { getPostUrlBySlug } from '@utils/url-utils'
 import PostCard from './PostCard.astro'
 import { render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import type { Page } from 'astro'
+
+interface Props {
+  page: Page<CollectionEntry<'posts'>>
+}
 
 const { page } = Astro.props
 
@@ -17,23 +22,25 @@ const interval = 50
     page.data.map(async (entry) => {
       const { remarkPluginFrontmatter } = await render(entry)
       return (
-        <PostCard
-          entry={entry}
-          title={entry.data.title}
-          tags={entry.data.tags}
-          category={entry.data.category}
-          published={entry.data.published}
-          updated={entry.data.updated}
-          url={getPostUrlBySlug(entry.id)}
-          image={entry.data.image}
-          description={entry.data.description}
-          draft={entry.data.draft}
-          words={remarkPluginFrontmatter?.words || 0}
-          minutes={remarkPluginFrontmatter?.minutes || 0}
-          excerpt={remarkPluginFrontmatter?.excerpt || ''}
-          class:list="onload-animation"
-          style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
-        />
+        <div id={entry.id}>
+          <PostCard
+            entry={entry}
+            title={entry.data.title}
+            tags={entry.data.tags}
+            category={entry.data.category}
+            published={entry.data.published}
+            updated={entry.data.updated}
+            url={getPostUrlBySlug(entry.id)}
+            image={entry.data.image}
+            description={entry.data.description}
+            draft={entry.data.draft}
+            words={remarkPluginFrontmatter?.words || 0}
+            minutes={remarkPluginFrontmatter?.minutes || 0}
+            excerpt={remarkPluginFrontmatter?.excerpt || ''}
+            class:list="onload-animation"
+            style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
+          />
+        </div>
       )
     })
   }

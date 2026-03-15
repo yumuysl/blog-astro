@@ -29,6 +29,11 @@ const Content = entry.rendered?.html
 const headings = entry.rendered?.metadata?.headings
 const { remarkPluginFrontmatter } = await render(entry)
 
+const getBasePath = () => {
+  const getDirPath = getDir(entry.id)
+  return path.join('content/posts/', getDirPath === '/' ? entry.id : getDirPath)
+}
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -146,7 +151,7 @@ const jsonLd = {
           <ImageWrapper
             id="post-cover"
             src={entry.data.image}
-            basePath={path.join('content/posts/', getDir(entry.id))}
+            basePath={getBasePath()}
             class="mb-8 rounded-xl banner-container onload-animation"
           />
         )

@@ -3,6 +3,8 @@ node_modules
 dist
 build
 coverage
+docs
+public
 
 # 忽略特定文件类型
 *.min.js
@@ -13,9 +15,9 @@ my-special-file.js
 
 # 我的
 .husky
- .prettierignore
- .gitignore
- .npmrc
+.prettierignore
+.gitignore
+.npmrc
 *.yaml
- docs
+*.yml
  src/assets

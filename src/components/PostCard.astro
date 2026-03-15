@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import path from 'node:path'
 import { Icon } from 'astro-icon/components'
 import I18nKey from '../i18n/i18nKey'
@@ -7,6 +6,7 @@ import { i18n } from '../i18n/translation'
 import { getDir } from '../utils/url-utils'
 import ImageWrapper from './misc/ImageWrapper.astro'
 import PostMetadata from './PostMeta.astro'
+import type { CollectionEntry } from 'astro:content'
 import type { PropsType } from '@/types/entry'
 
 interface Props extends PropsType {
@@ -31,6 +31,13 @@ const {
 const className = Astro.props.class
 
 const hasCover = image !== undefined && image !== null && image !== ''
+console.log('print image：', image)
+console.log('getDir：', getDir(entry.id))
+console.log('print entry id：', entry.id)
+const getBasePath = () => {
+  const getDirPath = getDir(entry.id)
+  return path.join('content/posts/', getDirPath === '/' ? entry.id : getDirPath)
+}
 
 const coverWidth = '28%'
 const remarkPluginFrontmatter = { words, minutes, excerpt }
@@ -143,7 +150,7 @@ const remarkPluginFrontmatter = { words, minutes, excerpt }
           </div>
           <ImageWrapper
             src={image}
-            basePath={path.join('content/posts/', getDir(entry.id))}
+            basePath={getBasePath()}
             alt="Cover Image of the Post"
             class="w-full h-full"
           />
