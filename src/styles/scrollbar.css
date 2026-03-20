@@ -1,34 +1,27 @@
 /* Scrollbar CSS file */
+@import 'tailwindcss';
 
 .scrollbar-base.os-scrollbar {
-  transition: all 0.3s;
+  @apply transition-all;
   pointer-events: unset;
 
   &.os-scrollbar-horizontal {
-    padding: 0.25rem 0.5rem;
-    height: 1rem;
-
+    @apply py-1 px-2 h-4;
     .os-scrollbar-track .os-scrollbar-handle {
-      border-radius: 9999px;
-      height: 0.25rem;
+      @apply rounded-full h-1;
     }
-
     &:hover .os-scrollbar-track .os-scrollbar-handle {
-      height: 0.5rem;
+      @apply h-2;
     }
   }
 
   &.os-scrollbar-vertical {
-    padding: 0.25rem 0.25rem;
-    width: 1rem;
-
+    @apply px-1 py-1 w-4;
     .os-scrollbar-track .os-scrollbar-handle {
-      border-radius: 9999px;
-      width: 0.25rem;
+      @apply rounded-full w-1;
     }
-
     &:hover .os-scrollbar-track .os-scrollbar-handle {
-      width: 0.5rem;
+      @apply w-2;
     }
   }
 }

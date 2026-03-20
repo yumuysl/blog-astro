@@ -158,10 +158,7 @@ const jsonLd = {
         )
       }
 
-      <Markdown
-        class="mb-6 markdown-content onload-animation"
-        set:html={Content}
-      />
+      <Markdown class="mb-6 onload-animation" set:html={Content} />
 
       {
         licenseConfig.enable && (

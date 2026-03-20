@@ -1,39 +1,37 @@
 /* Photoswipe CSS file */
+@import 'tailwindcss';
 
 .pswp__button {
-  transition: all 0.3s;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0;
-  width: 3rem;
-  height: 3rem;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  &:active {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
+  @apply transition bg-black/40 hover:bg-black/50 active:bg-black/60 flex items-center justify-center mr-0 w-12 h-12;
 }
-
 .pswp__button--zoom,
 .pswp__button--close {
-  margin-top: 1rem;
-  border-radius: 0.75rem;
-  transform: scale(0.9) translateZ(0);
-
-  &:active {
-    transform: scale(0.9) translateZ(0);
-  }
+  @apply mt-4 rounded-xl active:scale-90;
 }
-
 .pswp__button--zoom {
-  margin-right: 0.625rem;
+  @apply mr-2.5;
+}
+.pswp__button--close {
+  @apply mr-4;
 }
 
-.pswp__button--close {
-  margin-right: 1rem;
-}
+/* 下面的别删，需要弄清楚 */
+
+/* .pswp__button--zoom, */
+/* .pswp__button--close { */
+/*   margin-top: 1rem; */
+/*   border-radius: 0.75rem; */
+/*   transform: scale(0.9) translateZ(0); */
+/**/
+/*   &:active { */
+/*     transform: scale(0.9) translateZ(0); */
+/*   } */
+/* } */
+/**/
+/* .pswp__button--zoom { */
+/*   margin-right: 0.625rem; */
+/* } */
+/**/
+/* .pswp__button--close { */
+/*   margin-right: 1rem; */
+/* } */

@@ -149,6 +149,7 @@ export default defineConfig({
         },
       ],
     ],
+    gfm: true,
   },
   vite: {
     build: {
