@@ -1,5 +1,6 @@
 /* Expressive Code CSS file */
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 .expressive-code {
   .frame {

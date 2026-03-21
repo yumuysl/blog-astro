@@ -1,5 +1,6 @@
 /* Scrollbar CSS file */
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 .scrollbar-base.os-scrollbar {
   @apply transition-all;

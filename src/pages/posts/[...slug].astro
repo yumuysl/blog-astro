@@ -14,6 +14,7 @@ import PostMetadata from '../../components/PostMeta.astro'
 import { profileConfig, siteConfig } from '../../config'
 import { formatDateToYYYYMMDD } from '../../utils/date-utils'
 import { render } from 'astro:content'
+import type { MarkdownHeading } from 'astro'
 
 export async function getStaticPaths() {
   const blogEntries = await getSortedPosts()
@@ -26,7 +27,9 @@ export async function getStaticPaths() {
 const { entry } = Astro.props
 // console.log('entry structure:', entry)
 const Content = entry.rendered?.html
-const headings = entry.rendered?.metadata?.headings
+const headings = entry.rendered?.metadata?.headings as
+  | MarkdownHeading[]
+  | undefined
 const { remarkPluginFrontmatter } = await render(entry)
 
 const getBasePath = () => {
@@ -84,22 +87,22 @@ const jsonLd = {
       >
         <div class="flex flex-row items-center">
           <div
-            class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"
+            class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-50 flex items-center justify-center mr-2"
           >
             <Icon name="material-symbols:notes-rounded" />
           </div>
-          <div class="text-sm">
+          <div class="text-sm text-50">
             {remarkPluginFrontmatter.words}
             {' ' + i18n(I18nKey.wordsCount)}
           </div>
         </div>
         <div class="flex flex-row items-center">
           <div
-            class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"
+            class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-50 flex items-center justify-center mr-2"
           >
             <Icon name="material-symbols:schedule-outline-rounded" />
           </div>
-          <div class="text-sm">
+          <div class="text-sm text-50">
             {remarkPluginFrontmatter.minutes}
             {
               ' ' +
@@ -121,8 +124,7 @@ const jsonLd = {
           data-pagefind-meta="title"
           class="transition w-full block font-bold mb-3
                     text-3xl md:text-[2.25rem]/[2.75rem]
-                    text-black/90 dark:text-white/90
-                    md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                    text-90 md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]"
         >
           {entry.data.title}
@@ -190,7 +192,7 @@ const jsonLd = {
               name="material-symbols:chevron-left-rounded"
               class="text-[2rem] text-[var(--primary)]"
             />
-            <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
+            <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-75">
               {entry.data.nextTitle}
             </div>
           </div>
@@ -208,7 +210,7 @@ const jsonLd = {
       {
         entry.data.prevSlug && (
           <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
-            <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
+            <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-75">
               {entry.data.prevTitle}
             </div>
             <Icon
